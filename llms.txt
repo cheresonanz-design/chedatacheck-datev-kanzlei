@@ -1,0 +1,6 @@
+# CheDataCheck Kanzlei & DATEV (by VeriTakt Collective)
+> Client-side Fehlbeleg-Reminder, SKR03/SKR04 mapping & DATEV CSV generator.
+
+- App: https://cheresonanz-design.github.io/chedatacheck-datev-kanzlei/
+- Offers: https://cheresonanz-design.github.io/chedatacheck-datev-kanzlei/pro/
+- Legal: https://cheresonanz-design.github.io/chedatacheck-datev-kanzlei/legal/

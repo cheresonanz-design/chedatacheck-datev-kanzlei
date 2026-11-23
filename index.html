@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CheDataCheck Kanzlei — Mandanten-Belegjagd &amp; DATEV Vorerfassung</title>
+  <meta name="description" content="Fehlbeleg-Erkennung, SKR03/SKR04 Vorkontierung, Mandanten-Reminder &amp; DATEV-CSV direkt im Browser." />
+  <link rel="canonical" href="https://cheresonanz-design.github.io/chedatacheck-datev-kanzlei/" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "CheDataCheck Kanzlei & DATEV Vorerfassung", "applicationCategory": "BusinessApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "url": "https://cheresonanz-design.github.io/chedatacheck-datev-kanzlei/"}</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand-mark" href="index.html"><span>CheDataCheck Kanzlei</span><span class="brand-badge">DATEV · SKR03/04 · BELEGJAGD</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation"><a href="index.html" class="active">Belegjagd & DATEV App</a>
+<a href="fehlbeleg-generator/" class="">Fehlbeleg-Reminder</a>
+<a href="skr03-skr04-vorerfassung/" class="">SKR03 / SKR04</a>
+<a href="datev-csv-export/" class="">DATEV CSV</a>
+<a href="pro/" class="">Kanzlei-Kit & Rollout</a>
+<a href="legal/" class="">Impressum</a><a href="pro/" class="nav-cta">49 EUR Kit</a></nav>
+    </div>
+  </header>
+  
+  <section class="hero"><div class="container"><h1>Mandanten-Belegjagd &amp; DATEV Vorerfassung (SKR03/SKR04)</h1><p>Erkennen Sie Fehlbelege über 250 EUR (§ 14 UStG), Bewirtungs-Risiken und § 13b Reverse-Charge — mit 1-Klick Mandanten-Reminder &amp; DATEV-CSV (100 % lokal ohne Cloud-Upload).</p></div></section>
+  <main class="container">
+    <div class="card">
+      <div class="btn-row" style="margin-top:0;margin-bottom:14px;">
+        <button type="button" class="btn" id="sampleFehlBtn">Demo: Handwerk-Mandant (2 Fehlbelege + Bewirtung)</button>
+        <button type="button" class="btn" id="sampleSkr04Btn">Demo: Agentur SKR04 (Vollständig)</button>
+        <button type="button" class="btn" id="sampleRevBtn">Demo: Commerce Reverse-Charge (Strenger Ton)</button>
+      </div>
+      <div class="form-grid">
+        <div><label for="mandantName">Mandant / Firma</label><input type="text" id="mandantName" /></div>
+        <div><label for="chartSelect">Kontenrahmen</label><select id="chartSelect"><option value="SKR03">SKR03</option><option value="SKR04">SKR04</option></select></div>
+        <div><label for="periodInput">Buchungsmonat (YYYY-MM)</label><input type="text" id="periodInput" /></div>
+        <div><label for="toneSelect">Reminder-Tonalität</label><select id="toneSelect"><option value="freundlich">Freundlich</option><option value="streng">Streng (USt-VA-Frist)</option></select></div>
+      </div>
+      <div class="btn-row"><button type="button" class="btn btn-primary" id="runCheckBtn">Mandanten-Stapel prüfen</button></div>
+    </div>
+
+    <div id="resultCard" class="card hidden">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+        <h2 id="resultHeadline" style="margin:0;">Ergebnis</h2>
+        <div class="btn-row" style="margin:0;">
+          <button type="button" class="btn btn-primary" id="copyRemBtn">Mandanten-Reminder kopieren</button>
+          <button type="button" class="btn" id="dlCsvBtn">DATEV Buchungsstapel (.csv)</button>
+          <button type="button" class="btn" id="dlJsonBtn">JSON-Audit laden</button>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-box"><div class="kpi-label">Beleg-Readiness</div><div class="kpi-val" id="readyKpi">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Offene Fehlbelege</div><div class="kpi-val" id="missingKpi">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Kontenrahmen</div><div class="kpi-val" id="chartKpi">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Monatsvolumen (Brutto)</div><div class="kpi-val" id="totalKpi">-</div></div>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>TX</th><th>Datum</th><th>Lieferant</th><th>Betrag</th><th>Vorkontierung</th><th>Status</th><th>Prüfhinweis</th></tr></thead><tbody id="entriesBody"></tbody></table></div>
+      <h3>Versandfertiger Mandanten-Reminder</h3>
+      <textarea id="reminderBox" readonly aria-label="Mandanten-Reminder Text"></textarea>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="offer-card highlight"><div><span class="badge badge-pass">CDC-DATEV-01 · 49 EUR</span><h3>Steuerkanzlei &amp; DATEV Belegkit</h3><div class="offer-price">49 EUR</div><p class="muted">4-Tab Excel-Matrix (Fehlbelege, SKR03/SKR04, Bewirtung 70/30, DATEV CSV), Kanzlei-Guide PDF &amp; Offline-CLI.</p></div><div class="btn-row"><a href="mailto:che.resonanz@gmail.com?subject=Bestellung%20CheDataCheck%20Kanzlei%20DATEV%20Belegkit%20%2849%20EUR%29" class="btn btn-primary">49 EUR Kit bestellen</a><a href="pro/" class="btn">Details</a></div></div>
+      <div class="offer-card"><div><span class="badge badge-warn">CDC-DATEV-ROLLOUT · 2.900 EUR</span><h3>Kanzlei Belegjagd &amp; DATEV Rollout</h3><div class="offer-price">2.900 EUR</div><p class="muted">Mandanten-Fehlbeleg-Workflow, Top-50 Kreditoren SKR03/SKR04 Mapping &amp; DATEV CSV Pipeline ohne Pro-Mandant-Abo.</p></div><div class="btn-row"><a href="mailto:che.resonanz@gmail.com?subject=Anfrage%20CheDataCheck%20Kanzlei%20DATEV%20Rollout%20%282.900%20EUR%29" class="btn btn-dark">2.900 EUR Rollout buchen</a><a href="pro/" class="btn">Umfang</a></div></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p><strong>CheDataCheck Kanzlei</strong> — Fehlbeleg-Erkennung, SKR03/SKR04 Vorkontierung, Mandanten-Reminder &amp; DATEV-CSV direkt im Browser.</p>
+      <p>Che Goncalves Menendez · CheDataCheck · by VeriTakt Collective (Gewerbe: ImportKlar) · Liegnitzstr. 53A, 28237 Bremen, Deutschland · Umsatzsteuerbefreit gemäß § 19 UStG (Kleinunternehmerregelung)</p>
+      <p><a href="legal/">Impressum &amp; DSGVO</a> · <a href="pro/">49 EUR Kit &amp; 2.900 EUR Rollout</a> · <a href="https://cheresonanz-design.github.io/opskanon-directory/" target="_blank" rel="noopener">Gelistet auf OpsKanon</a></p>
+    </div>
+  </footer>
+  <script src="assets/datev_kanzlei_engine.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
