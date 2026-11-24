@@ -36,6 +36,26 @@
         <div><label for="periodInput">Buchungsmonat (YYYY-MM)</label><input type="text" id="periodInput" /></div>
         <div><label for="toneSelect">Reminder-Tonalität</label><select id="toneSelect"><option value="freundlich">Freundlich</option><option value="streng">Streng (USt-VA-Frist)</option></select></div>
       </div>
+      <div style="margin-top:16px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;">
+          <strong>Eigene Buchungen / Bankzeilen bearbeiten oder CSV importieren</strong>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <input type="file" id="csvUpload" accept=".csv,.txt" aria-label="Bank- oder DATEV-CSV hochladen" />
+            <button type="button" class="btn" id="addTxBtn">+ Buchungszeile</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Datum</th><th>Lieferant</th><th>Kategorie</th><th>Steuer/BU</th><th>Brutto EUR</th><th>Beleg?</th><th>§14 OK?</th><th>Anlass?</th><th></th></tr></thead>
+            <tbody id="txInputBody"></tbody>
+          </table>
+        </div>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;font-weight:600;">CSV-Zeilen direkt einfügen (Datum;Lieferant;Kategorie;Steuermodus;Betrag;Beleg)</summary>
+          <textarea id="csvPasteArea" rows="4" style="width:100%;margin-top:8px;" placeholder="2026-11-05;Telekom Deutschland;telekommunikation;vst_19;89,25;ja&#10;2026-11-11;AWS EMEA SARL;saas_it;eu_reverse_charge;460,00;nein"></textarea>
+          <div class="btn-row"><button type="button" class="btn" id="importCsvBtn">CSV-Text übernehmen</button></div>
+        </details>
+      </div>
       <div class="btn-row"><button type="button" class="btn btn-primary" id="runCheckBtn">Mandanten-Stapel prüfen</button></div>
     </div>
 
